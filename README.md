@@ -9,6 +9,7 @@ Några kolumner för "features" som matchar korten i backlogen, så vi får en t
 
 Alltså: En kolumn med user stories backlog som innehåller vanliga user stories-kort med egna färger.
 I kolumnen till höger om completed user stories har vi kolumner med Tasks, där det framgår tydligare med hur user storien blir klar.
+https://docs.google.com/presentation/d/1jspgu4CejM_y6_mR8QcyPGvHiL3cvuKVE4aAPmvC-SI/edit?usp=sharing
 
 Vi tänker också köra sprint-möten innan, under och efter "sprintarna" för att se till att alla är på samma nivå.
 
