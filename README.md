@@ -13,6 +13,9 @@ https://docs.google.com/presentation/d/1jspgu4CejM_y6_mR8QcyPGvHiL3cvuKVE4aAPmvC
 
 Vi tänker också köra sprint-möten innan, under och efter "sprintarna" för att se till att alla är på samma nivå.
 
+### Design:
+https://www.figma.com/file/BQJFljvpRoZIrCfdIefJzU/Slutprojekt-Frontend?node-id=0%3A1
+
 ## Instruktioner
 Ni ska bygga en FrontEnd till en färdig BackEnd.
 BackEnden finns på följande länk [https://github.com/zocom-david-lundholm/webshop-rest-api](https://github.com/zocom-david-lundholm/webshop-rest-api)
