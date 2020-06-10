@@ -1,5 +1,7 @@
 # Slutprojekt - Utveckling av Webbapplikationer och Agil utveckling
 
+OBS! Använd denna backend: https://github.com/r0bban/slutprojekt-backend.git
+
 ## Arbetssätt
 
 Vi kommer använda ett Trellobräde för att hålla koll på vad vi ska göra, gör och har gjort i ren SCRUM-anda,
