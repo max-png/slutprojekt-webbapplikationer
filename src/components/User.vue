@@ -1,45 +1,75 @@
 <template>
   <article class="user-card">
     <div class="wrapper name">
-      <p class="label name">Namn</p>
-      <input class="data name" v-model="currentUser.name" type="text" :disabled="!isEditMode" />
+      <h4 class="label name">Namn</h4>
+      <p v-if="!isEditMode" class="data name">{{currentUser.name}}</p>
+      <input
+        v-if="isEditMode"
+        class="data name"
+        v-model="newUser.name"
+        type="text"
+        :disabled="!isEditMode"
+      />
     </div>
     <div class="wrapper email">
-      <p class="label email">E-post</p>
-      <input class="data email" v-model="currentUser.email" type="text" :disabled="!isEditMode" />
+      <h4 class="label email">E-post</h4>
+      <p v-if="!isEditMode" class="data name">{{currentUser.email}}</p>
+      <input
+        v-if="isEditMode"
+        class="data email"
+        v-model="newUser.email"
+        type="text"
+        :disabled="!isEditMode"
+      />
     </div>
     <div v-if="user.role == 'admin'" class="wrapper role">
-      <p class="label">Roll</p>
-      <input class="data role" v-model="currentUser.role" type="text" disabled />
+      <h4 class="label">Roll</h4>
+      <p v-if="!isEditMode" class="data name">{{currentUser.role}}</p>
+      <input v-if="isEditMode" class="data role" v-model="newUser.role" type="text" disabled />
     </div>
     <div v-if="currentUser.adress" class="wrapper address">
       <div v-if="currentUser.adress.street" class="wrapper street">
-        <p class="label street">Gatuaddress</p>
+
+        <h4 class="label street">Gatuaddress</h4>
+        <p v-if="!isEditMode" class="data name">{{currentUser.adress.street}}</p>
         <input
+          v-if="isEditMode"
           class="data street"
-          v-model="currentUser.adress.street"
+          v-model="newUser.adress.street"
+
           type="text"
           :disabled="!isEditMode"
         />
       </div>
       <div v-if="currentUser.adress.zip" class="wrapper zip">
-        <p class="label zip">Postkod</p>
+
+        <h4 class="label zip">Postkod</h4>
+        <p v-if="!isEditMode" class="data name">{{currentUser.adress.zip}}</p>
         <input
+          v-if="isEditMode"
           class="data zip"
-          v-model="currentUser.adress.zip"
+          v-model="newUser.adress.zip"
+
           type="number"
           :disabled="!isEditMode"
         />
       </div>
       <div v-if="currentUser.adress.city" class="wrapper city">
-        <p class="label city">Stad</p>
+
+        <h4 class="label city">Stad</h4>
+        <p v-if="!isEditMode" class="data name">{{currentUser.adress.city}}</p>
         <input
+          v-if="isEditMode"
           class="data city"
-          v-model="currentUser.adress.city"
+          v-model="newUser.adress.city"
+
           type="text"
           :disabled="!isEditMode"
         />
       </div>
+      <button v-if="isEditMode" @click="submitEdit" disabled>Skicka</button>
+      <button v-if="isEditMode" @click="cancelEdit">Avbryt</button>
+      <button v-if="!isEditMode" @click="toggleEdit">Redigera</button>
     </div>
   </article>
 </template>
@@ -49,16 +79,24 @@ export default {
   data() {
     return {
       isEditMode: this.editMode,
-      currentUser: this.user
+      currentUser: this.user,
+      newUser: { ...this.user }
     };
   },
   props: {
     user: Object,
+    editedUser: Object,
     editMode: Boolean
+  },
+  methods: {
+    toggleEdit() {
+      this.isEditMode = !this.isEditMode;
+    },
+    submitEdit() {},
+    cancelEdit() {
+      this.isEditMode = false;
+      this.newUser = { ...this.currentUser };
+    }
   }
 };
 </script>
-
-
-<style>
-</style>

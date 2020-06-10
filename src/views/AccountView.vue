@@ -6,11 +6,14 @@
     </div>
     <div v-if="getCurrentUser" class="details">
       <User v-bind:user="getCurrentUser" />
-      <button @click="logout()">Logga ut</button>
+      <!-- <button @click="logout()">Logga ut</button> -->
     </div>
 
     <div class="history" v-if="getCurrentUser.role == 'customer'">
-      <h3 class="showHistory" @click="toggleShowHistory()">Visa min orderhistorik</h3>
+      <h3
+        class="showHistory"
+        @click="toggleShowHistory()"
+      >Visa min orderhistorik {{this.expandSymbol}}</h3>
 
       <div class="orderWrapper" v-if="this.showingHistory">
         <OrderHistory />
@@ -27,7 +30,7 @@ export default {
     User
   },
   data() {
-    return { showingHistory: false };
+    return { showingHistory: false, expandSymbol: "↓" };
   },
   computed: {
     getCurrentUser() {
@@ -49,6 +52,11 @@ export default {
     },
     toggleShowHistory() {
       this.showingHistory = !this.showingHistory;
+      if (this.showingHistory) {
+        this.expandSymbol = "↑";
+      } else {
+        this.expandSymbol = "↓";
+      }
     }
   }
 };
@@ -59,16 +67,21 @@ export default {
 }
 
 .accountView {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: green;
+  background-color: #e0ffdb;
+  box-sizing: content-box;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
 }
 
 .history {
-
   align-self: flex-start;
-  justify-content: flex-end;
+  justify-content: center;
   width: 100%;
+}
+
+.showHistory:hover {
+  text-decoration: underline;
+  color: rgba($color: #5c5c5c, $alpha: 1);
 }
 </style>

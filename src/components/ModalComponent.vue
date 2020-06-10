@@ -24,7 +24,9 @@ export default {
 .modalComponent {
   position: fixed;
   width: 100%;
-  min-height: 100vh;
+  max-width: 100vw;
+  height: 100%;
+  min-height: 100%;
   // height: min-content;
   background-color: rgba($color: #000000, $alpha: 0.7);
   display: flex;

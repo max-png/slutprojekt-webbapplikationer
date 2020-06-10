@@ -21,7 +21,7 @@
     <div class="product-list-container" v-if="!cartEmpty">
       <OrderArticle v-for="product in cart" :key="product._id" :product="product" />
     </div>
-    <p v-else>Din varukorg är tom.</p>
+    <p class="product-list-container" v-else>Din varukorg är tom.</p>
 
     <button class="to-checkout" @click="checkout">TILL UTCHECKNING</button>
   </div>
@@ -50,7 +50,7 @@ export default {
     close() {
       this.$store.commit("closeModal");
     },
-    clearCart(){
+    clearCart() {
       this.$store.commit("clearCart");
     }
   }
@@ -66,6 +66,11 @@ export default {
   width: 60%;
   min-width: min-content;
   max-width: 600px;
+  min-height: 50%;
+
+  .product-list-container {
+    flex-grow: 1;
+  }
 
   &.disabled {
     button.to-checkout {
@@ -77,10 +82,9 @@ export default {
       .top-text .cart-summary {
         display: none;
       }
-      .clear-cart{
-        background: lightgray
+      .clear-cart {
+        background: lightgray;
       }
-
     }
   }
 

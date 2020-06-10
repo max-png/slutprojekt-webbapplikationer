@@ -1,22 +1,27 @@
 <template>
   <article class="order-card">
-    <div class="wrapper id">
-      <p class="label id">Ordernummer:</p>
-      <p class="data id">{{orderObject._id}}</p>
+
+    <div class="order-wrapper">
+      <div class="wrapper id">
+        <h4 class="label id">Ordernummer:</h4>
+        <span class="data id">{{orderObject._id}}</span>
+      </div>
+      <div class="wrapper time">
+        <h4 class="label time">Orderdatum:</h4>
+        <p class="data time">{{orderObject.timeStamp}}</p>
+      </div>
+      <div class="wrapper amount">
+        <h4 class="label quantity">Summa:</h4>
+        <p class="data quantity">{{orderObject.orderValue}} kr</p>
+      </div>
+      <div class="wrapper status">
+        <h4 class="label status">Status:</h4>
+        <p class="data status">{{orderObject.status}}</p>
+      </div>
+      <button @click="toggleExpand()">{{buttonText}}</button>
+
     </div>
-    <div class="wrapper time">
-      <p class="label time">Orderdatum:</p>
-      <p class="data time">{{orderObject.timeStamp}}</p>
-    </div>
-    <div class="wrapper amount">
-      <p class="label quantity">Summa:</p>
-      <p class="data quantity">{{orderObject.orderValue}} kr</p>
-    </div>
-    <div class="wrapper status">
-      <p class="label status">Status:</p>
-      <p class="data status">{{orderObject.status}}</p>
-    </div>
-    <button @click="toggleExpand()">Artiklar</button>
+
     <div v-if="this.isExpanded" class="items-list-wrapper">
       <OrderHistoryArticle v-for="item in orderObject.items" :key="item.id" :orderItem="item" />
     </div>
@@ -33,7 +38,8 @@ export default {
   data() {
     return {
       orderObject: this.order,
-      isExpanded: this.expandMode
+      isExpanded: this.expandMode,
+      buttonText: "Visa artiklar"
     };
   },
   props: {
@@ -48,20 +54,38 @@ export default {
     },
     toggleExpand() {
       this.isExpanded = !this.isExpanded;
+      if (this.isExpanded) {
+        this.buttonText = "Dölj artiklar";
+      } else {
+        this.buttonText = "Visa artiklar";
+      }
     }
-  },
-  mounted() {
-    // console.log(this.order.items);
+
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .order-card {
-  border: 2px solid black;
-  margin: 0 auto;
-  p {
-    display: inline;
+
+  margin: 1.2rem;
+  background-color: rgba($color: #c7f3f7, $alpha: 0.4);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.order-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  .wrapper {
+    .id {
+      min-width: 15rem;
+    }
   }
+}
+button {
+  padding: 0.2rem;
+
 }
 </style>

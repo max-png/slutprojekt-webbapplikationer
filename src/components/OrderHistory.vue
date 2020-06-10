@@ -1,8 +1,6 @@
 <template>
   <div class="orders-list-wrapper">
-
     <Order v-for="order in orderHistory" :key="order._id" :order="order" :expandMode="expandMode" />
-
   </div>
 </template>
 
@@ -14,11 +12,8 @@ export default {
     Order
   },
 
-
   props: {
     expandMode: Boolean
-    // order: Object,
-    // orders: Array
   },
 
   computed: {
@@ -47,14 +42,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.orders-list-wrapper {
-
-  background: cadetblue;
-  border: 2px dotted black;
-
-}
-
-article p:nth-child(n) {
-  background-color: red;
-}
 </style>

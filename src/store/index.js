@@ -43,6 +43,12 @@ export default new Vuex.Store({
     },
     currentUser: "",
     userToken: "",
+    paymentCard: {
+      cardNumber: "5566478865782355",
+      cardHolderName: "",
+      ValudThru: "1223",
+      ccvVode: "456"
+    }
   },
   mutations: {
     setLoading(state, value) {
@@ -113,6 +119,12 @@ export default new Vuex.Store({
       state.showLogin = false;
       localStorage.currentUser = JSON.stringify(user);
     },
+    setUserPaymentCard(state, user){     //fake in lack of backend support
+      state.paymentCard.cardHolderName = user.name
+    },
+    setNewUserPaymentCard(state, card){     //fake in lack of backend support
+      state.paymentCard = card;
+    },
     logout(state) {
       (state.currentUser = ""),
         (state.userToken = ""),
@@ -164,6 +176,9 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    updateUserPaymentCardFromLoggedInUser(context){  //fake in lack of backend support
+      context.commit('setUserPaymentCard', context.state.currentUser)
+    },
     async initialProductLoad(context) {
       if (context.state.products.length <= 0) {
         await context.dispatch("refreshProducts");
@@ -265,6 +280,7 @@ export default new Vuex.Store({
           context.commit("setToken", data.token);
           context.commit("setCurrentUser", data.user);
           context.commit("closeModal");
+          context.dispatch("updateUserPaymentCardFromLoggedInUser");
         }
       } catch (error) {
         context.commit("setError", error);

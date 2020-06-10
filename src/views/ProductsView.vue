@@ -74,7 +74,10 @@ export default {
     goToSingleProduct(productId) {
       this.$router.push({ name: "Product", params: { id: productId } });
     }
-  }
+  },
+  // created(){
+  //   this.maxPrice = this.$store.state.products.reduce((acc, curr) => acc.price + curr.price, 0)
+  // }
 };
 </script>
 <style lang='scss' scoped>

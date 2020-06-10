@@ -1,13 +1,17 @@
 <template>
-  <article class="order-article">
+  <article :class="{checkout: checkOutMode, minimized: minimized}" class="order-article">
     <div class="text-wrapper">
-      <div class="product-details">
-        <h3 class="product-title">{{product.title}}</h3>
-        <p class="product-description">{{product.shortDesc}}</p>
-        <p class="product-price">{{product.price}} kr</p>
-      </div>
+      <!-- <div class="product-details"> -->
+      <h3 class="product-title">
+        {{product.title}}
+        <span v-if="minimized" class="minimized-price">{{product.price}} kr</span>
+      </h3>
+      <p v-if="!minimized" class="product-description">{{product.shortDesc}}</p>
+      <p v-if="checkOutMode && !minimized" class="product-long-description">{{product.longDesc}}</p>
+      <p v-if="!minimized" class="product-price">{{product.price}} kr</p>
+      <!-- </div> -->
     </div>
-    <div class="product-thumbnail" @click="goToSingleProduct(product._id)">
+    <div v-if="!minimized" class="product-thumbnail" @click="goToSingleProduct(product._id)">
       <img :src="require(`@/assets/${product.imgFile}`)" alt />
     </div>
 
@@ -15,7 +19,7 @@
       <button class="item-quantity increase" v-on:click="increaseQuantity">
         <img class="arrow" src="@/assets/arrow-up.svg" alt="arrow-up" />
       </button>
-      <p class="amount">{{this.quantity}}</p>
+      <p class="amount">{{quantity}}</p>
       <button class="item-quantity decrease" v-on:click="reduceQuantity">
         <img class="arrow" src="@/assets/arrow-down.svg" alt="arrow-down" />
       </button>
@@ -30,7 +34,9 @@ export default {
     };
   },
   props: {
-    product: Object
+    product: Object,
+    checkOutMode: Boolean,
+    minimized: Boolean
   },
   methods: {
     increaseQuantity() {
@@ -60,27 +66,54 @@ h2 {
 .order-article {
   display: flex;
   justify-content: space-between;
-  box-sizing: border-box;
+  // box-sizing: border-box;
   margin-bottom: 10px;
   align-items: center;
-  // border-top: 1px solid rgba(0, 0, 0, 0.596);
   padding: 0 10px;
   background: #cef8f1;
+  // box-sizing: content-box;
+
+  &.minimized {
+    padding-bottom: 1rem;
+
+  .text-wrapper {
+    // flex-grow: 1;
+    max-width: none;
+    margin-right: 2rem;
+
+    
+    .product-title {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  }
+
+  &.checkout {
+    background: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.486);
+  }
 
   .text-wrapper {
     flex-grow: 1;
-    // border: 1px solid black;
+    max-width: 20rem;
+
+    > * {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     .product-title {
       padding-right: 0.3rem;
     }
   }
 
-  .product-thumbnail{
+  .product-thumbnail {
     height: 5rem;
     // border: 1px solid black;
     margin-right: 2rem;
-    img{
+    img {
       height: 100%;
     }
   }
