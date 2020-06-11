@@ -41,7 +41,6 @@
       </article>
     </section>
 
-    <!-- <router-link :to="{name: 'Products'}">Go Back to All</router-link> -->
     <transition name="fade">
       <router-view />
     </transition>
@@ -78,21 +77,10 @@ export default {
       this.$router.push({ name: "Product", params: { id: productId } });
     }
   }
-  // created(){
-  //   this.maxPrice = this.$store.state.products.reduce((acc, curr) => acc.price + curr.price, 0)
-  // }
 };
 </script>
 <style lang='scss' scoped>
 .productsView {
-  // margin: 0 auto;
-  // max-width: 1200px;
-  // background-color: teal;
-  // position: relative;
-  // display: grid;
-  // grid-template-rows: 5%;
-  // height: 100%;
-  // grid-auto-rows: 100px;
   overflow: auto;
 }
 aside {

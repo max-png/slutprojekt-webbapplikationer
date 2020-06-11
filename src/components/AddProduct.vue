@@ -61,8 +61,6 @@ export default {
 .add-product {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  // grid-auto-rows: 250px;
-  // background: crimson;
 
   @media screen and(max-width: 768px) {
     grid-template-columns: unset;
@@ -98,8 +96,6 @@ export default {
   img {
     max-width: 30vh;
     object-fit: contain;
-    // max-width: 100px;
-    // margin: 0 auto;
   }
 
   .row-component {

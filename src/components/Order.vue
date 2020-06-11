@@ -17,7 +17,6 @@
         <h4 class="label status">Status:</h4>
         <p class="data status">{{orderObject.status}}</p>
       </div>
-      <!-- <button @click="toggleExpand()">{{buttonText}}</button> -->
       <button @click="toggleExpand" class="expand-collapse">
         <p class="action-text">
           <span v-if="isExpanded">{{buttonText}}</span>

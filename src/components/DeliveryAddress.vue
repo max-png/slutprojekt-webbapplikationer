@@ -44,7 +44,6 @@
 export default {
   data() {
     return {
-    //   deliveryAddress: this.userDeliveryAddress
     };
   },
   props: {
@@ -52,10 +51,6 @@ export default {
   },
   computed: {},
   methods: {
-    // updateCard() {
-    //   const updatedCard = { ...this.card };
-    //   this.$store.commit("setNewUserPaymentCard", updatedCard);
-    // },
     zipValidator(event) {
       const incomingValue = event.target.value;
       if (this.userDeliveryAddress.zip.length < 6) {
@@ -65,9 +60,6 @@ export default {
       }
     }
   },
-//   beforeMount() {
-//     this.$store.dispatch("updateUserPaymentCardFromLoggedInUser");
-//   }
 };
 </script>
 

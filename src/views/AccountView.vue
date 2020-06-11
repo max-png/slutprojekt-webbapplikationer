@@ -6,7 +6,6 @@
     </div>
     <div v-if="getCurrentUser" class="details">
       <User v-bind:user="getCurrentUser" />
-      <!-- <button @click="logout()">Logga ut</button> -->
     </div>
 
     <div class="history" v-if="getCurrentUser.role == 'customer'">
@@ -71,9 +70,6 @@ export default {
 .accountView {
   background-color: #e0ffdb;
   box-sizing: content-box;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
 }
 
 .history {

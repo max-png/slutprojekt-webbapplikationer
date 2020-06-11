@@ -1,11 +1,7 @@
 <template>
   <div id="app">
     <Header />
-
-    <!-- <ShoppingCart  /> -->
-
     <router-view class="mainContainer" />
-
     <Footer />
     <transition name="fade">
       <ModalComponent v-if="this.$store.state.showModal" />

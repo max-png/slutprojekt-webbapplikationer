@@ -1,9 +1,5 @@
 <template>
   <article class="order-item">
-    <!-- <div class="product-list-container"> -->
-    <!-- <OrderArticle v-for="product in filteredProducts" :key="product._id" :product="product" /> -->
-    <!-- </div> -->
-
     <div class="wrapper name">
       <div class="item" v-for="myItem in filteredProducts" v-bind:key="myItem._id">
         <div>
@@ -36,7 +32,6 @@
 </template>
 
 <script>
-// import OrderArticle from "../components/OrderArticle";
 export default {
   data() {
     return {
@@ -45,7 +40,6 @@ export default {
     };
   },
   components: {
-    // OrderArticle
   },
   methods: {},
   props: {
@@ -89,7 +83,6 @@ export default {
       position: relative;
       right: 0;
       width: 4rem;
-      // height: 20%;
       background-color: rgba($color: #ffbee9, $alpha: 0.6);
       border-radius: 0.4rem;
     }

@@ -82,7 +82,6 @@
         </button>        
         </section>
       <div class="orderWrapper" v-if="showOrdersIsExpanded">
-        <!-- <OrderHistory v-for="order in myOrders" v-bind:key="order._id" :order="order" /> -->
         <OrderHistory :expandMode="false" />
       </div>
     </div>
@@ -159,9 +158,6 @@ export default {
 </script>
 <style lang='scss' scoped>
 .adminView {
-  // overflow: auto;
-  
-  // border-radius: 10px;
   padding: 0.5rem;
   max-width: 100%;
 }

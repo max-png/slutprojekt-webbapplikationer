@@ -13,9 +13,6 @@
             <img class="icon" :src="require('@/assets/userIcon.svg')" alt />
           </button>
 
-          <!-- <button @click="goToFavorites" class="toolbox-button favourites">
-            <img class="icon" :src="require('@/assets/heartIcon.svg')" alt />
-          </button>-->
           <button @click="toggleCart" class="toolbox-button cart">
             <div v-if="this.$store.state.totalOrderQuantity>0" class="cart-quantity">
               <p>{{this.$store.state.totalOrderQuantity}}</p>

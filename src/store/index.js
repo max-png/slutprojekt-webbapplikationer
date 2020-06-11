@@ -3,7 +3,6 @@ import Vuex from "vuex";
 
 import API from "@/api/server";
 import * as APIauth from "@/api/server/auth";
-// import account from "@/store/modules/account.js";
 
 Vue.use(Vuex);
 
@@ -24,23 +23,6 @@ export default new Vuex.Store({
     editProduct: {},
 
     loading: true,
-
-    newProduct: {
-      title: "Roberts produkt",
-      price: 123,
-      shortDesc: "Unisex",
-      longDesc:
-        "kalle NY ipsum dolor sit amet, 50-50 Sidewalk Surfer nose bump kickflip bruised heel fakie berm soul skate. Bluntslide transition nollie hard flip bank pressure flip ho-ho. Steps rip grip nosepicker roll-in yeah 540 pump. ",
-      imgFile: "skateboard-generic.png",
-    },
-    updatedProduct: {
-      title: "uppdtaerad produkt",
-      price: 123,
-      shortDesc: "Unisex",
-      longDesc:
-        "kalle uppdaterad ipsum dolor sit amet, 50-50 Sidewalk Surfer nose bump kickflip bruised heel fakie berm soul skate. Bluntslide transition nollie hard flip bank pressure flip ho-ho. Steps rip grip nosepicker roll-in yeah 540 pump. ",
-      imgFile: "skateboard-generic.png",
-    },
     currentUser: "",
     userToken: "",
     paymentCard: {
@@ -202,11 +184,9 @@ export default new Vuex.Store({
     },
     setError(state, error) {
       state.error = error;
-      // console.log(error.message);
       setTimeout(() => {
         state.error = undefined;
       }, 2000);
-      // clearTimeout(timeout);
     },
   },
   getters: {
@@ -269,7 +249,6 @@ export default new Vuex.Store({
         await API.deleteProductById(productId, context.state.userToken);
         context.commit("removeProductFromStateProductsById", productId);
       } catch (error) {
-        // console.log(error);
 
         context.commit("setError", error);
       }
@@ -290,7 +269,6 @@ export default new Vuex.Store({
           await API.postOrderRequest(orderRequestBody, context.state.userToken);
           console.log("efter postOrderRequest");
           context.commit("clearCart");
-          // await context.dispatch("refreshOrderHistory");
         } else {
           console.log("Attempt to place order, but cart is empty");
         }
@@ -318,7 +296,6 @@ export default new Vuex.Store({
         );
         console.log(updatedProduct);
         context.commit("updateProductInStoreProducts", productToUpdate);
-        // return Promise.resolve("Success");
       } catch (error) {
         console.log(error);
         context.commit("setError", error);
@@ -356,5 +333,4 @@ export default new Vuex.Store({
     },
   },
 
-  // modules: { account },
 });

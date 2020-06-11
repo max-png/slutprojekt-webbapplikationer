@@ -78,7 +78,6 @@ export default {
       });
       console.log(resp);
       if (resp.ok) {
-        // alert("Du är inte inloggad som admin");
         const data = await resp.json();
         return data.product;
       } else {
@@ -89,12 +88,8 @@ export default {
           msg = resp.status;
         }
         throw new Error(msg);
-        // console.log(resp)
-        // return { success: resp.ok, data: undefined, errorMessage: "Unauthorized" }
       }
     } catch (error) {
-      //WHAT WEE WANT TO DO UPON NETWORK ERROR....
-      // return { success: false, data: undefined, errorMessage: "Connection Error" }
       throw new Error(error);
     }
   },
@@ -116,8 +111,6 @@ export default {
       } else {
         msg = resp.status;
       }
-      // console.log(1);
-      // console.error(msg);
       throw new Error(msg);
     }
   },
@@ -130,7 +123,6 @@ export default {
     });
     console.log(await resp.error);
     if (resp.ok) {
-      //   alert("Hittade ingen produkt med ID: " + productId);
       const data = await resp.json();
       return data;
     } else {

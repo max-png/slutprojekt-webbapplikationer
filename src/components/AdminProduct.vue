@@ -42,6 +42,8 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   grid-auto-rows: 200px;
   gap: 2rem;
+  background: #add8e6;
+  border: 0;
 
   .spans-fields {
     overflow: hidden;
@@ -68,7 +70,7 @@ export default {
   }
 
   .row-component {
-    border-radius: 10px;
+    // border-radius: 10px;
     padding: 0.2rem;
     margin-bottom: 0.5rem;
     display: flex;
